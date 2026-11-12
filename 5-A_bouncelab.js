@@ -66,7 +66,7 @@ function update(dt) {
 
 // 全部消して、今の状態で描き直す
 function draw() {
-  ctx.fillStyle = "rgba(17, 26, 51, 0.15)";
+  ctx.fillStyle = "rgba(17, 26, 51, 0.18)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = ballColor;
   ctx.beginPath();
