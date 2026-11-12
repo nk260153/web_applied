@@ -6,8 +6,38 @@ let x = 100;          // 丸の中心の位置
 let y = 80;
 let vx = 180;         // 横の速さ（1秒に180px）
 let vy = 140;         // 縦の速さ（1秒に140px。＋ は下へ）
-const r = 14;         // 半径
+let r = 14;         // 半径
+let ballColor = "#ffd166";
 let last = performance.now();   // 前に loop が呼ばれた時刻（ページを開いてからのミリ秒）
+
+document.addEventListener("keydown", (e) => {
+  if (e.code === "ArrowUp") {
+    vx = vx * 1.2;   // 速さを1.2倍（向きはそのまま）
+    vy = vy * 1.2;
+  }
+
+  // ここに、ほかのキーを足す
+  if (e.code === "ArrowDown") {
+    vx = vx * 0.8;
+    vy = vy * 0.8;
+  }
+
+  if (e.code === "ArrowLeft") {
+    r = Math.max(5, r - 2);
+  }
+
+  if (e.code === "ArrowRight") {
+    r = Math.min(40, r + 2);
+  }
+
+  if (e.code === "KeyC") {
+    if (ballColor === "#ffd166") {
+      ballColor = "#06d6a0";
+    } else {
+      ballColor = "#ffd166";
+    }
+  }
+});
 
 // 状態を少し変える
 function update(dt) {
@@ -36,8 +66,9 @@ function update(dt) {
 
 // 全部消して、今の状態で描き直す
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);   // canvas 全体を消す
-  ctx.fillStyle = "#ffd166";
+  ctx.fillStyle = "rgba(17, 26, 51, 0.15)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = ballColor;
   ctx.beginPath();
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.fill();
