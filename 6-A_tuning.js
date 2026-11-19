@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 const CONFIG = {
   GRAVITY: 1500,
   JUMP_SPEED: 500,
-  MOVE_SPEED: 240,
+  MOVE_SPEED: 320,
   MAX_JUMPS: 1,
   FALL_GRAVITY_RATE: 2,
 };
